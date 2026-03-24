@@ -11,7 +11,7 @@ library(REFT)
 library(writexl)
 
 res <- reft_run_simple(
-  input_file = "ex.xlsx"
+  input_file = "IG.xlsx"
 )
 
 
