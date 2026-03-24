@@ -6,6 +6,7 @@ install.packages("https://raw.githubusercontent.com/gaoguozhen1/REFT/main/REFT_0
 
 library(REFT)
 ######################Molecular functional trait
+
 library(writexl)
 
 res <- reft_run_simple(
@@ -23,6 +24,7 @@ write_xlsx(
 )
 
 #####################KEGG-MICROBE
+
 res <- reft_kegg_microbe_run("micro-EC1.csv")
 head(res$results)
 
