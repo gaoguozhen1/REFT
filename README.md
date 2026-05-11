@@ -5,7 +5,13 @@ install.packages(c(
   "writexl", "webchem", "rcdk", "rcdklibs"
 ))
 
-install.packages("https://raw.githubusercontent.com/gaoguozhen1/REFT/main/REFT_0.1.3.tar.gz",repos = NULL, type = "source")
+install.packages("remotes")
+
+remotes::install_url(
+  "https://raw.githubusercontent.com/gaoguozhen1/REFT/main/REFT_0.1.3.tar.gz",
+  dependencies = TRUE,
+  upgrade = "never"
+)
 
 library(REFT)
 
