@@ -8,7 +8,7 @@ install.packages(c(
 install.packages("remotes")
 
 remotes::install_url(
-  "https://raw.githubusercontent.com/gaoguozhen1/REFT/main/REFT_0.1.3.tar.gz",
+  "https://raw.githubusercontent.com/gaoguozhen1/REFT/main/REFT_0.1.4.tar.gz",
   dependencies = TRUE,
   upgrade = "never"
 )
@@ -19,12 +19,16 @@ library(REFT)
 
 ######################Molecular functional trait
 
-library(writexl)
-
-res <- reft_run_simple(
-  input_file = "IG.xlsx"
+options(
+  REFT.pubchem_max_tries = 5,
+  REFT.pubchem_sleep_sec = 1,
+  REFT.pubchem_timeout = 60,
+  REFT.pubchem_cache_file = "REFT_pubchem_cache.rds"
 )
 
+library(writexl)
+
+res <- reft_run_simple(input_file = "IG.xlsx")
 
 write_xlsx(
   list(
@@ -37,7 +41,9 @@ write_xlsx(
 
 #####################KEGG-MICROBE
 
-res <- reft_kegg_microbe_run("micro-EC1.csv")
+res <- reft_kegg_microbe_run(
+  "micro-EC1.csv",
+  sleep_sec = 0.5
+)
 
 head(res$results)
-
